@@ -23,8 +23,7 @@ public class GUI extends javax.swing.JFrame {
        /* Conexion objetoConexion =new Conexion();
         objetoConexion.establecreConexcion(); */
        campoid.setEnabled(false);
-       
-       
+      
        Alumnos objetoAlumnos = new Alumnos();
        objetoAlumnos.MostrarAlumnos(tabla);
        
@@ -40,6 +39,10 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -58,9 +61,20 @@ public class GUI extends javax.swing.JFrame {
         campodireccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         campocarrera = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        campofemenino = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        menu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -111,11 +125,26 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        campofecha.setDateFormatString("yyyy/MM/dd");
+
         jLabel6.setText("Fecha nac");
 
         jLabel7.setText("Carrera");
 
         campocarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleciona", "Lic. Analisis de sistemas", "Lic. Diseño grafico", "Lic. Diseño de modas", "Arquitectura" }));
+
+        jLabel8.setText("Genero");
+
+        buttonGroup1.add(campofemenino);
+        campofemenino.setText("Femenino");
+
+        buttonGroup4.add(jRadioButton1);
+        jRadioButton1.setText("Masculino");
+
+        jRadioButton2.setText("Activo");
+
+        buttonGroup4.add(jRadioButton3);
+        jRadioButton3.setText("Inactivo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,25 +161,36 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7)))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(campocarrera, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoapellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(camponombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campoedad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campodireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campofecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campofemenino))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(btnguardar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btneliminar)
+                        .addComponent(btnguardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btneditar))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(campocarrera, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoapellido, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(camponombre, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoid, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoedad, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campodireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campofecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 36, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btneliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btneditar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jRadioButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButton3)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,14 +222,23 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(campocarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btneliminar)
-                            .addComponent(btnguardar)
-                            .addComponent(btneditar)))
+                            .addComponent(campocarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(campofecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(campofemenino)
+                    .addComponent(jRadioButton1))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btneliminar)
+                    .addComponent(btneditar)
+                    .addComponent(btnguardar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de alumnos"));
@@ -229,6 +278,30 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        menu1.setText("Alumnos");
+
+        jMenuItem3.setText("Lista de almunos");
+        menu1.add(jMenuItem3);
+
+        jMenuItem2.setText("Crear alumnos");
+        menu1.add(jMenuItem2);
+
+        jMenuBar2.add(menu1);
+
+        jMenu5.setText("Inicio");
+
+        jMenuItem5.setText("Inicio");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem5);
+
+        jMenuBar2.add(jMenu5);
+
+        setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,7 +309,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
         );
@@ -264,7 +337,7 @@ public class GUI extends javax.swing.JFrame {
         Conexion  objetoConexion = new Conexion();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(campofecha.getDate());
-        String Consulta= "INSERT INTO alumnos(nombre, apellido, edad, direccion,fechanac,carrera) VALUES (?,?,?,?,?,?);";
+        String Consulta= "INSERT INTO alumnos(nombre, apellido, edad, direccion,fechanac,carrera,genero) VALUES (?,?,?,?,?,?,?);";
         try{
             CallableStatement cs = objetoConexion.establecreConexcion().prepareCall(Consulta);
             cs.setString(1,camponombre.getText());
@@ -273,7 +346,14 @@ public class GUI extends javax.swing.JFrame {
             cs.setString(4,campodireccion.getText());
             cs.setString(5,date);
             cs.setString(6, campocarrera.getSelectedItem().toString());
+            if(jRadioButton1.isSelected()){
+            cs.setString(7,jRadioButton1.getText());
+            }else if(campofemenino.isSelected()){
+            cs.setString(7,campofemenino.getText());
+            }
             cs.execute();
+            
+           
             JOptionPane.showMessageDialog(null,"Se inserto correctamente!");
         } catch(Exception e ){
             
@@ -295,6 +375,12 @@ public class GUI extends javax.swing.JFrame {
                 campodireccion.setText((tabla.getValueAt(fila,4).toString()));
                 campofecha.setDateFormatString(tabla.getValueAt(fila,5).toString());
                 campocarrera.setSelectedItem(tabla.getValueAt(fila,6).toString());
+                if(jRadioButton1.isSelected()==true){
+                jRadioButton1.setText((tabla.getValueAt(fila,7).toString()));
+                }else if(campofemenino.isSelected()==true){
+                campofemenino.setText((tabla.getValueAt(fila,7).toString()));
+                }
+                
             }   
             else{
                 JOptionPane.showMessageDialog(null,"Fila no selecionada");
@@ -352,6 +438,12 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_campoidActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        home h =new home();
+        h.setVisible(true); 
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,11 +483,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JTextField campoapellido;
     private javax.swing.JComboBox<String> campocarrera;
     private javax.swing.JTextField campodireccion;
     private javax.swing.JTextField campoedad;
     private com.toedter.calendar.JDateChooser campofecha;
+    private javax.swing.JRadioButton campofemenino;
     private javax.swing.JTextField campoid;
     private javax.swing.JTextField camponombre;
     private javax.swing.JLabel jLabel1;
@@ -405,10 +502,20 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu menu1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

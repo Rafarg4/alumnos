@@ -133,9 +133,10 @@ public class Alumnos {
         model.addColumn("Direccion");
         model.addColumn("Fecha de nacimineto");
         model.addColumn("Carrera");
+        model.addColumn("Genero");
         paramtabla.setModel(model);
         sql="select * from alumnos";
-        String []  datos = new String[7];
+        String []  datos = new String[8];
         Statement st;
          try{
              st=objetoConexion.establecreConexcion().createStatement();
@@ -148,6 +149,7 @@ public class Alumnos {
              datos[4]=rs.getString(5);
              datos[5]=rs.getString(6);
              datos[6]=rs.getString(7);
+             datos[7]=rs.getString(8);
              model.addRow(datos);
          }
              paramtabla.setModel(model);

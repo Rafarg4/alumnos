@@ -27,11 +27,11 @@ public class home extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenualumno = new javax.swing.JMenu();
         jMenualumnos = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
@@ -40,6 +40,10 @@ public class home extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 36)); // NOI18N
         jLabel1.setText("Sistema de registro");
 
+        jLabel2.setText("Nombre ");
+
+        jLabel3.setText("Enzo ");
+
         jMenualumno.setText("Alumnos");
         jMenualumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,7 +51,7 @@ public class home extends javax.swing.JFrame {
             }
         });
 
-        jMenualumnos.setText("Crear alumnos");
+        jMenualumnos.setText("Lista de alumnos");
         jMenualumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenualumnosActionPerformed(evt);
@@ -56,13 +60,6 @@ public class home extends javax.swing.JFrame {
         jMenualumno.add(jMenualumnos);
 
         jMenuBar1.add(jMenualumno);
-
-        jMenu3.setText("Materias");
-
-        jMenuItem4.setText("Crear materias");
-        jMenu3.add(jMenuItem4);
-
-        jMenuBar1.add(jMenu3);
 
         salir.setText("Salir");
 
@@ -83,8 +80,15 @@ public class home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jLabel2)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3)))
                 .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,7 +96,11 @@ public class home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(jLabel1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,9 +157,9 @@ public class home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenu jMenualumno;
     private javax.swing.JMenuItem jMenualumnos;
