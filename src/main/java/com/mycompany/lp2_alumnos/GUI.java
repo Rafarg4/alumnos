@@ -7,6 +7,7 @@ package com.mycompany.lp2_alumnos;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,9 +64,7 @@ public class GUI extends javax.swing.JFrame {
         campocarrera = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         campofemenino = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        campomasculino = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -126,6 +125,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         campofecha.setDateFormatString("yyyy/MM/dd");
+        campofecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                campofechaPropertyChange(evt);
+            }
+        });
 
         jLabel6.setText("Fecha nac");
 
@@ -138,13 +142,8 @@ public class GUI extends javax.swing.JFrame {
         buttonGroup1.add(campofemenino);
         campofemenino.setText("Femenino");
 
-        buttonGroup4.add(jRadioButton1);
-        jRadioButton1.setText("Masculino");
-
-        jRadioButton2.setText("Activo");
-
-        buttonGroup4.add(jRadioButton3);
-        jRadioButton3.setText("Inactivo");
+        buttonGroup1.add(campomasculino);
+        campomasculino.setText("Masculino");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,22 +173,16 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(campodireccion, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(campofecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(campomasculino)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campofemenino))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(btnguardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btneliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btneditar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton3)))))
+                        .addComponent(btneliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btneditar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,16 +221,12 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(campofemenino)
-                    .addComponent(jRadioButton1))
+                    .addComponent(campomasculino))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btneliminar)
                     .addComponent(btneditar)
                     .addComponent(btnguardar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -279,8 +268,18 @@ public class GUI extends javax.swing.JFrame {
         );
 
         menu1.setText("Alumnos");
+        menu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Lista de almunos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         menu1.add(jMenuItem3);
 
         jMenuItem2.setText("Crear alumnos");
@@ -289,6 +288,11 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar2.add(menu1);
 
         jMenu5.setText("Inicio");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
 
         jMenuItem5.setText("Inicio");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -346,8 +350,8 @@ public class GUI extends javax.swing.JFrame {
             cs.setString(4,campodireccion.getText());
             cs.setString(5,date);
             cs.setString(6, campocarrera.getSelectedItem().toString());
-            if(jRadioButton1.isSelected()){
-            cs.setString(7,jRadioButton1.getText());
+            if(campomasculino.isSelected()){
+            cs.setString(7,campomasculino.getText());
             }else if(campofemenino.isSelected()){
             cs.setString(7,campofemenino.getText());
             }
@@ -365,7 +369,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+     
         try{
+             
             int fila = tabla.getSelectedRow();
             if (fila >=0){
                 campoid.setText((tabla.getValueAt(fila,0).toString()));
@@ -373,14 +379,16 @@ public class GUI extends javax.swing.JFrame {
                 campoapellido.setText((tabla.getValueAt(fila,2).toString()));
                 campoedad.setText((tabla.getValueAt(fila,3).toString()));
                 campodireccion.setText((tabla.getValueAt(fila,4).toString()));
-                campofecha.setDateFormatString(tabla.getValueAt(fila,5).toString());
+                Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse((String)tabla.getValueAt(fila,5).toString());
+                campofecha.setDate(fecha);
                 campocarrera.setSelectedItem(tabla.getValueAt(fila,6).toString());
-                if(jRadioButton1.isSelected()==true){
-                jRadioButton1.setText((tabla.getValueAt(fila,7).toString()));
-                }else if(campofemenino.isSelected()==true){
-                campofemenino.setText((tabla.getValueAt(fila,7).toString()));
-                }
-                
+               String genero= tabla.getValueAt(fila,7).toString();
+               if(genero.equals("Masculino")){
+                   campomasculino.setSelected(true);
+               } else {
+                   campofemenino.setSelected(true);
+               }
+               
             }   
             else{
                 JOptionPane.showMessageDialog(null,"Fila no selecionada");
@@ -393,17 +401,24 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaMouseClicked
 
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
-         Conexion objetoConexion = new Conexion();
-        String editar ="UPDATE alumnos SET alumnos.nombre=?,alumnos.apellido=?,alumnos.edad=?,alumnos.Direccion=?,alumnos.fechanac=?,alumnos.carrera=? where alumnos.id=?";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateeditar = sdf.format(campofecha.getDate());
+        Conexion objetoConexion = new Conexion();
+        String editar ="UPDATE alumnos SET alumnos.nombre=?,alumnos.apellido=?,alumnos.edad=?,alumnos.Direccion=?,alumnos.fechanac=?,alumnos.carrera=?,alumnos.genero=? where alumnos.id=?";
         try{
         CallableStatement cs = objetoConexion.establecreConexcion().prepareCall(editar);
             cs.setString(1,camponombre.getText());
             cs.setString(2,campoapellido.getText());
             cs.setString(3,campoedad.getText());
             cs.setString(4,campodireccion.getText());
-            cs.setString(5,campofecha.getDateFormatString());
+            cs.setString(5,dateeditar);
             cs.setString(6, campocarrera.getSelectedItem().toString());
-            cs.setString(7,campoid.getText());
+            if(campomasculino.isSelected()){
+            cs.setString(7,campomasculino.getText());
+            }else if(campofemenino.isSelected()){
+            cs.setString(7,campofemenino.getText());
+            }
+            cs.setString(8,campoid.getText());
             cs.execute(); 
         JOptionPane.showMessageDialog(null,"Modificacion exitosa!");
         
@@ -443,6 +458,22 @@ public class GUI extends javax.swing.JFrame {
         h.setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void campofechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_campofechaPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campofechaPropertyChange
+
+    private void menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -494,6 +525,7 @@ public class GUI extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser campofecha;
     private javax.swing.JRadioButton campofemenino;
     private javax.swing.JTextField campoid;
+    private javax.swing.JRadioButton campomasculino;
     private javax.swing.JTextField camponombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -511,9 +543,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menu1;
     private javax.swing.JTable tabla;
