@@ -331,13 +331,22 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-          
-    if (camponombre.getText().isEmpty() || campoapellido.getText().isEmpty())
+        
+        int aux; 
+        aux=0;
+        if(campofemenino.isSelected() || campomasculino.isSelected()){
+              aux=1;
+          }
+        
+         if (camponombre.getText().isEmpty() || campoapellido.getText().isEmpty() || 
+            campofecha.getDate()==null || campocarrera.getSelectedItem()==null 
+            || aux==0 )
     {
       JOptionPane.showMessageDialog(null,"Campos vacios!");
     } 
      else
     {
+        
         Conexion  objetoConexion = new Conexion();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(campofecha.getDate());
